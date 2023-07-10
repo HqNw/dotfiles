@@ -1,0 +1,22 @@
+[touch-gestures]
+description = "Touch gestures"
+version = "0.0.1"
+author = "horriblename"
+
+[touch-gestures.build]
+output = "build/src/libtouch-gestures.so"
+steps = [
+    "meson setup build",
+    "ninja -C build",
+]
+
+[borders-plus-plus]
+description ="A plugin to add more borders to windows."
+version = "1.0"
+author = "Vaxry"
+
+[borders-plus-plus.build]
+output = "borders-plus-plus/borders-plus-plus.so"
+steps = [
+    "make -C borders-plus-plus all",
+]

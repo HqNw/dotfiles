@@ -1,0 +1,9 @@
+/** Basic config file **/
+
+configuration {
+  show-icons:         true;
+  icon-theme:         "nord";
+}
+//@theme "/home/hqnw/.local/share/rofi/themes/ribbon_bottom_round.rasi"
+//@theme "/home/hqnw/.local/share/rofi/themes/sidetab-adapta.rasi"
+@theme "/home/hqnw/.config/rofi/themes/nord.rasi"
