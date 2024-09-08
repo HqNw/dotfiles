@@ -28,7 +28,7 @@ inputbar {
   background-image:	url("/tmp/cover.png");
   expand:		false;
   border-radius:	8px 8px 0px 0px;
-  padding:		290px 15px 15px 15px;
+  padding:		100px 15px 15px 15px;
 }
 
 listview {

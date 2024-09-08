@@ -7,47 +7,81 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": [
+        "hyprland/workspaces",
         "clock",
-        "wlr/workspaces",
         "custom/NekoMC"
     ],
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray",
-        "custom/reload-hypr",
+        // "custom/reload-hypr",
         "custom/updates",
+        "disk",
+        // "custom/dsbattery",
         "custom/language",
         "battery",
+        "cpu",
+        "temperature",
         "backlight",
         "pulseaudio",
         "pulseaudio#microphone"
     ],
 
     "hyprland/window": {
-        "format": "{}"
+      "format": "{}",
+      "rewrite": {
+			"(.*)Mozilla Firefox": "󰈹 Firefox",
+      "(.*)Brave":"Brave",
+      "(.*)LibreWolf": "󰈹 LibreWolf",
+      "(.*)Discord": "󰙯 Discord",
+		  "(.*)Spotify(.*)": " Spotify",
+      "(.*)Steam": "󰓓 Steam",
+      "(.*)Visual Studio Code": "󰨞 Visual Studio Code",
+      "(.*)Thunar": "󰉋 thunar",
+      "(.*)Minecraft Launcher": "󰍳 Minecraft Launcher",
+      "(.*)Blender": "󰂫 Blender",
+      "Unity Hub(.*)": "󰚯 Unity Hub",
+      "Unity(.*)": "󰚯 Unity Editor",
+      "(.*)hqnw@HqNw(.*)": "  alacritty",
+      "nvim(.*)": " Neovim",
+      "vim(.*)": " Vim"
+      }
+
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
+        "show-special": true,
         "on-click": "activate",
-        //"format": "{icon}",
+        "format": "{icon}",
+        "sort-by-number": true,
         "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
+          // "1": [],
+          // "2": [],
+          // "3": [],
+          // "4": [],
+          // "5": [],
+          // "6": [],
+          // "7": [],
+          // "8": [],
+          // "9": [],
+          // "10": []
+         },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "󰉋",
+            "5": "",
+            "urgent": "",
+            "focused": ""
         }
+
     },
     "custom/updates": {
         "exec": "(pacman -Qu ; yay -Qua) | wc -l",
         "interval": 7200,
-        "format": " {}",
+        "format": "󰇚 {}",
 	      "on-click": "alacritty -e paru -Sy"
     },
    "custom/weather" : {
@@ -59,19 +93,19 @@
     },
 
     "custom/NekoMC": {
-          "return-type":"json",
-          "exec":"NekoMC --hook-waybar",
-          "on-click":"NekoMC --toggle",
-          "on-click-right":"NekoMC --next",
-          "on-scroll-up":"NekoMC --next",
-          "on-scroll-down":"NekoMC --previous",
+          "return-type": "json",
+          "exec": "NekoMC --hook-waybar",
+          "on-click": "NekoMC --toggle",
+          "on-click-right": "NekoMC --next",
+          "on-scroll-up": "NekoMC --next",
+          "on-scroll-down": "NekoMC --previous",
           "escape" : "true"
     },
 
     "custom/reload-hypr": {
         // "exec": "eww open --toggle sidebar",
         // "interval": 3200,
-        "format": " ",
+        "format": "󰛽 ",
 	      "on-click": "eww open --toggle sidebar"
     },
 
@@ -81,13 +115,14 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{: %I:%M:%S %p   %d/%m}",
+        "format": "{:%I:%M %p | %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        // 
     },
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": ["", "", ""],
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
         "on-scroll-up": "brightnessctl set 1%+",
         "on-scroll-down": "brightnessctl set 1%-",
         "min-length": 6
@@ -102,7 +137,7 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", " "]
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -123,12 +158,43 @@
         }
     },
     "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
+      "format": "{format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": " Muted",
+      "on-click": "pamixer --default-source -t",
+      "on-scroll-up": "pamixer --default-source -i 5",
+      "on-scroll-down": "pamixer --default-source -d 5",
+      "scroll-step": 5
+    },
+
+    "cpu": {
+      "interval": 1,
+      "format": "󰍛 {usage}%"
+      // "max-length": 10
+    },
+
+    "temperature": {
+      "interval": 1,
+      "critical-threshold": 90,
+      "format-critical": "󰸁 {temperatureC}°C",
+      "format": " {temperatureC}°C"
+    },
+
+    "disk": {
+      "interval": 30,
+      //"format": "󰋊",
+      "path": "/home/hqnw/",
+      //"format-alt-click": "click",
+      "format": "{percentage_used}% 󰋊 ",
+      //"tooltip": true,
+      "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
     }
+    // "custom/dsbattery": {
+    //   "format": "{}",
+    //   "interval": 3,
+    //   "escape": true,
+    //   "exec": "dsbattery",
+    //   "on-click-right": "dsbattery -d"
+    // }
+
 }

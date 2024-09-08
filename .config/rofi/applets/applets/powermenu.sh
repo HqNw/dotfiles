@@ -28,11 +28,11 @@ options="$shutdown\n$reboot\n$suspend\n$lock\n$logout"
 chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 2)"
 case $chosen in
     $shutdown)
-        systemctl poweroff
+        poweroff
         ;;
 
     $reboot)
-        systemctl reboot
+        reboot
         ;;
 
     $lock)

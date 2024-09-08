@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Font Awesome Solid, Cartograph CF Nerd Font, monospace;
+    font-family: scheherazade-new, Font Awesome Solid, Cartograph CF Nerd Font, monospace;
     font-weight: bold;
     font-size: 14px;
     min-height: 0;
@@ -44,10 +44,11 @@ tooltip {
 
 #workspaces button:hover {
     background: #11111b;
-    color: #cdd6f4;
+    color: #cdd6ff;
     border-radius: 10px;
 }
 
+#custom-dsbattery,
 #custom-NekoMC,
 #custom-language,
 #custom-updates,
@@ -56,6 +57,9 @@ tooltip {
 #window,
 #clock,
 #battery,
+#cpu,
+#disk,
+#temperature, 
 #pulseaudio,
 #network,
 #custom-reload-hypr,
@@ -66,8 +70,16 @@ tooltip {
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
-    border: 1px solid #181825;
+    border: 0px solid #181825;
 }
+
+/* #cpu { */
+/*     color: #94e2d5; */
+/* } */
+/**/
+/* #temperature { */
+/*     color: #74c7ec; */
+/* } */
 
 #tray {
     border-radius: 10px;
@@ -76,10 +88,10 @@ tooltip {
 
 #workspaces {
     background: #1e1e2e;
-    border-radius: 10px;
-    margin-left: 10px;
+    border-radius: 0px 10px 10px 0px;
+    margin-left: 0px;
     padding-right: 0px;
-    padding-left: 5px;
+    padding-left: 0px;
 }
 
 #custom-caffeine {
@@ -97,8 +109,15 @@ tooltip {
 
 #custom-updates {
     color: #f5c2e7;
-    border-radius: 0px 10px 10px 0px;
-    margin-right: 10px;
+    border-radius: 10px 0px 0px 10px;
+    /* border-radius: 10px; */
+    margin-right: 0px;
+}
+
+#disk {
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 5px;
+  margin-left: 0px;
 }
 
 #custom-reload-hypr {
@@ -108,14 +127,14 @@ tooltip {
 
 #window {
     border-radius: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 #clock {
     color: #fab387;
     border-radius: 10px 10px 10px 10px;
-    margin-left: 0px;
+    margin-left: 10px;
     border-right: 0px;
 }
 
@@ -141,13 +160,14 @@ tooltip {
     color: #a6e3a1;
     border-radius: 10px 0px 0px 10px;
     margin-right: 0px;
+    margin-left: 5px;
     border-right: 0px;
 }
 
 #custom-weather {
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 10px 10px 10px 10px;
     border-right: 0px;
-    margin-left: 0px;
+    margin-left: 10px;
 }
 
 #custom-NekoMC {
@@ -157,3 +177,11 @@ tooltip {
     padding-left: 10px;
 
 }
+
+#custom-dsbattery {
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 0px;
+}
+
+

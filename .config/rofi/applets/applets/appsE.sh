@@ -47,7 +47,7 @@ case $chosen in
         ;;
     $music)
 
-        hyprctl dispatch exec "[workspace 5] spotify"
+        hyprctl dispatch exec "[workspace 5] spotify-launcher"
 
         ;;
     $python)

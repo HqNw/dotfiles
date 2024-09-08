@@ -1,0 +1,81 @@
+
+(defwidget stats [name label used]
+  (box :class "card $(name)2" :halgin "center"
+    (circular-progress :value used :start-angle 0 :thickness 12 :class "${name}3"
+     (label :text label
+            :class "label ${name}4"
+            :limit-width 2
+            :truncate false
+            :show_truncated false
+            :wrap false
+            :angle 0.0
+            :markup label
+            )
+     
+    )
+  )
+)
+
+(defwidget dashboard []
+  (box :orientation "h" :space-evenly false 
+    (box :orientation "v" 
+      (box :orientation "h" 
+        (stats :name "cpu" :label "" :used cpu)
+        (stats :name "memory" :label "" :used memory)
+        )(box
+        (stats :name "brightness" :label "" :used brightness)
+        (stats :name "battery" :label "" :used bat)
+        )(box
+        (stats :name "volume" :label "" :used sound)
+        (stats :name "uptime" :label "" :used uptime)
+      )  
+    )
+      (box :orientation "v" :space-evenly false
+       (box :class "card weather" :hight "30px"
+          (literal :content weather)
+         )
+       (box :class "card clock2"
+         (box :class "time2" time2)
+       )
+
+       (box :class "card date" greeting)
+    
+       (box :class "card applauncher" :hight "20px"
+          (button :onclick "brave &" "")
+          (button :onclick "alacritty &" "")
+          (button :onclick "brave https://youtube.com &" "")
+          (button :onclick "discord &" "")
+          (button :onclick "hyprctl dispatch exec '[workspace 5] spotify-launcher' " "")
+         ) 
+       )
+     (box :orientation "v" :space-evenly false
+        (box :class "card buttons"
+          (button :onclick "swaylock &" "")
+          (button :onclick "" "")
+          )
+        (box :orientation "v" :class "card music2" :space-evenly false
+          (box :orientation "v" :space-evenly false
+          (box :class "thumbnail" :style "background-image: url('./images/placeholder.svg')")
+          (label :text song :class "music-song-name" :wrap true)
+          (label :text artist :class "music-artist")
+        )
+          (box :orientation "h" :class "music3"
+               (button :onclick "./scripts/music --prev" "")
+               (button :onclick "./scripts/music --toggle" music_status)
+               (button :onclick "./scripts/music --next" "")
+             )
+          )
+     )
+   )
+ 
+)
+
+(defwindow dashboard
+  :monitor 0
+  :stacking "bg"
+  :geometry (geometry
+              :x "0"
+              :y "0"
+              :anchor "center"
+              )
+(dashboard))

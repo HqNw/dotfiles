@@ -49,3 +49,5 @@ ACCENT="${COLORS[$(( $RANDOM % 14 ))]}ff"
 #theme="${themes[$(( $RANDOM % 12 ))]}"
 
 rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
+# wofi --no-lazy-grab --show drun --modi drun --style $dir/"$theme"
+
