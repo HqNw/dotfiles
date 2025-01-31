@@ -8,16 +8,14 @@
     "height": 0,
     "modules-left": [
         "hyprland/workspaces",
-        "clock",
-        "custom/NekoMC"
+        "clock"
     ],
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray",
-        // "custom/reload-hypr",
         "custom/updates",
         "disk",
-        // "custom/dsbattery",
+        "custom/dsbattery",
         "custom/language",
         "battery",
         "cpu",
@@ -73,42 +71,18 @@
             "3": "",
             "4": "󰉋",
             "5": "",
-            "urgent": "",
+            // "urgent": "",
             "focused": ""
         }
 
     },
+
     "custom/updates": {
         "exec": "(pacman -Qu ; yay -Qua) | wc -l",
         "interval": 7200,
         "format": "󰇚 {}",
 	      "on-click": "alacritty -e paru -Sy"
     },
-   "custom/weather" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 30,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
-    },
-
-    "custom/NekoMC": {
-          "return-type": "json",
-          "exec": "NekoMC --hook-waybar",
-          "on-click": "NekoMC --toggle",
-          "on-click-right": "NekoMC --next",
-          "on-scroll-up": "NekoMC --next",
-          "on-scroll-down": "NekoMC --previous",
-          "escape" : "true"
-    },
-
-    "custom/reload-hypr": {
-        // "exec": "eww open --toggle sidebar",
-        // "interval": 3200,
-        "format": "󰛽 ",
-	      "on-click": "eww open --toggle sidebar"
-    },
-
 
     "tray": {
         "icon-size": 13,
@@ -188,13 +162,13 @@
       "format": "{percentage_used}% 󰋊 ",
       //"tooltip": true,
       "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+    },
+    "custom/dsbattery": {
+      "format": "{}",
+      "interval": 3,
+      "escape": true,
+      "exec": "dsbattery",
+      "on-click-right": "dsbattery -d"
     }
-    // "custom/dsbattery": {
-    //   "format": "{}",
-    //   "interval": 3,
-    //   "escape": true,
-    //   "exec": "dsbattery",
-    //   "on-click-right": "dsbattery -d"
-    // }
 
 }
